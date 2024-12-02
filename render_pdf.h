@@ -30,8 +30,6 @@ private slots:
 private:
     void generatePDF(const QImage& image);
     void savePDF(FPDF_DOCUMENT pdfDoc);
-    void paintEvent(QPaintEvent *event);
-
 
     QWebEngineView* m_view;  // Web engine view to render the content
     QWebEnginePage* m_page;  // Web engine page to load HTML content

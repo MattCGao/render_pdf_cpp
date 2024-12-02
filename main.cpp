@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     });
 
     // Show the RenderPDF widget (optional for debugging)
-    renderPDF.setVisible(false);  // Hide the widget if not needed
+    renderPDF.setVisible(false);  // Hide the widget
 
     int result = app.exec();
 

@@ -9,7 +9,7 @@ struct FileWriteData {
 
 // The WriteBlock callback function, writing data to an output stream
 int WriteBlockImpl(FPDF_FILEWRITE* pThis, const void* pData, unsigned long size) {
-    // Cast pThis to your user data type (FileWriteData)
+    // Cast pThis to user data type (FileWriteData)
     FileWriteData* fileWriteData = reinterpret_cast<FileWriteData*>(pThis);
 
     // Write the data to the output stream
@@ -25,14 +25,9 @@ RenderPDF::RenderPDF(const QString& htmlContent, const QString& pdfPath, QWidget
     m_view = new QWebEngineView(this);
     m_page = m_view->page();
 
-    // // Set the page to the view
-    // m_view->setPage(m_page);
-
     connect(m_page, &QWebEnginePage::loadFinished, this, &RenderPDF::onLoadFinished);
 
     m_page->setHtml(htmlContent);
-    // Load the HTML content
-    // m_view->setUrl(QUrl("data:text/html;charset=utf-8," + htmlContent));
 }
 
 // Slot: Triggered when HTML content is fully loaded
@@ -123,7 +118,6 @@ void RenderPDF::generatePDF(const QImage& image) {
         FPDF_DestroyLibrary();
         return;
     }    
-    // memcpy(buffer, image.bits(), image.sizeInBytes());
 
     QImage convertedImage = image.convertToFormat(QImage::Format_RGB888);
     if(convertedImage.isNull()) {
@@ -200,7 +194,6 @@ void RenderPDF::generatePDF(const QImage& image) {
         std::cerr << "Error: Attempting to close a null document." << std::endl;
     }
 
-    // FPDFPageObj_Destroy(imageObj);
     FPDF_DestroyLibrary();
 
     std::cout << "PDF generation completed successfully.\n";
@@ -226,12 +219,6 @@ void RenderPDF::savePDF(FPDF_DOCUMENT pdfDoc) {
         std::cerr << "Error saving the PDF document.\n";
     }
 }
-
-void RenderPDF::paintEvent(QPaintEvent *event) {
-    // QPainter painter(this);
-    // m_view->render(&painter);
-}
-
 
 RenderPDF::~RenderPDF() {
     if (m_page) {
