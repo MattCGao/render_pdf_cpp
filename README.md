@@ -1,6 +1,3 @@
-Here's a concise and professional `README.md` template for your project:
-
-````markdown
 # HTML to PDF Renderer using Qt and PDFium
 
 This project demonstrates a simple implementation of rendering HTML content into a PDF file using **Qt** for rendering HTML to an image and **PDFium** for creating PDF documents.
@@ -25,7 +22,6 @@ This project demonstrates a simple implementation of rendering HTML content into
    git clone https://github.com/MattCGao/render_pdf_cpp
    cd render_pdf_cpp
    ```
-````
 
 2. Ensure PDFium binaries are available:
 
